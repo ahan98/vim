@@ -1,3 +1,6 @@
+" if you don't want to use ~/.nvimrc, just copy this file as ~/.config/nvim/init.vim
+" otherwise, init.vim contains only the single line: source ~/.nvimrc
+
 """"""""""""""""""""""""
 "	Editor Settings
 """"""""""""""""""""""""
