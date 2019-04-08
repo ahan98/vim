@@ -1,5 +1,5 @@
 """"""""""""""""""""""""
-"	Editor Settings
+"   Editor Settings
 """"""""""""""""""""""""
 
 let mapleader=";"
@@ -9,6 +9,7 @@ set lazyredraw
 set backspace=indent,eol,start
 set tabstop=4
 set shiftwidth=4
+set expandtab
 set number
 
 " word wrap
@@ -18,29 +19,29 @@ set wrap linebreak nolist
 autocmd VimResized * if (&columns > 100) | set columns=100 | endif
 
 """"""""""""""""""""""""
-"		Plugins
+"       Plugins
 """"""""""""""""""""""""
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-	Plug 'jiangmiao/auto-pairs'
-	Plug 'junegunn/goyo.vim'
-	Plug 'vimwiki/vimwiki'
-	"Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
-	Plug 'scrooloose/nerdcommenter'
-	Plug 'pseewald/vim-anyfold'
+    Plug 'jiangmiao/auto-pairs'
+    Plug 'junegunn/goyo.vim'
+    Plug 'vimwiki/vimwiki'
+    "Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
+    Plug 'scrooloose/nerdcommenter'
+    Plug 'pseewald/vim-anyfold'
 
-	" themes
-	Plug 'junegunn/seoul256.vim'
-	Plug 'chriskempson/base16-vim'
-	Plug 'vim-airline/vim-airline'
-	Plug 'vim-airline/vim-airline-themes'
+    " themes
+    Plug 'junegunn/seoul256.vim'
+    Plug 'chriskempson/base16-vim'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
 " => base16-shell
 if filereadable(expand("~/.vimrc_background"))
-	source ~/.vimrc_background
+    source ~/.vimrc_background
 endif
 set termguicolors
 
@@ -83,7 +84,7 @@ let g:anyfold_fold_comments = 1
 set foldlevel=99
 
 """"""""""""""""""""""""
-"		Mappings
+"       Mappings
 """"""""""""""""""""""""
 
 " navigation
@@ -112,7 +113,7 @@ map <leader>d :bd<cr>
 nnoremap <Space> za
 
 """"""""""""""""""""""""
-"	Color Schemes
+"   Color Schemes
 """"""""""""""""""""""""
 
 " dark theme 233 (darkest) ~ 239 (lightest)
