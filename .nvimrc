@@ -1,11 +1,10 @@
-" if you don't want to use ~/.nvimrc, just copy this file as ~/.config/nvim/init.vim
-" otherwise, init.vim contains only the single line: source ~/.nvimrc
-
 """"""""""""""""""""""""
 "	Editor Settings
 """"""""""""""""""""""""
 
 let mapleader=";"
+
+set lazyredraw
 
 set backspace=indent,eol,start
 set tabstop=4
@@ -18,15 +17,8 @@ set wrap linebreak nolist
 " set max width to 100
 autocmd VimResized * if (&columns > 100) | set columns=100 | endif
 
-" enable for base16 script
-"set shell=bash\ -i
-"if filereadable(expand("~/.vimrc_background"))
-"  let base16colorspace=256
-"  source ~/.vimrc_background
-"endif
-
 """"""""""""""""""""""""
-"	Plugins
+"		Plugins
 """"""""""""""""""""""""
 
 call plug#begin('~/.local/share/nvim/plugged')
@@ -34,17 +26,23 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'jiangmiao/auto-pairs'
 	Plug 'junegunn/goyo.vim'
 	Plug 'vimwiki/vimwiki'
-	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
+	"Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 	Plug 'scrooloose/nerdcommenter'
 	Plug 'pseewald/vim-anyfold'
 
 	" themes
 	Plug 'junegunn/seoul256.vim'
-	Plug 'danielwe/base16-vim'
+	Plug 'chriskempson/base16-vim'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
+
+" => base16-shell
+if filereadable(expand("~/.vimrc_background"))
+	source ~/.vimrc_background
+endif
+set termguicolors
 
 " => AutoPair
 au FileType markdown let b:AutoPairs = AutoPairsDefine({'$':'$', '**':'**', '_':'_'})
@@ -66,11 +64,11 @@ nmap <Leader>j <Plug>VimwikiDiaryNextDay
 imap <C-p> <Plug>VimwikiDecreaseLvlSingleItem
 
 " => MarkdownPreview
-let g:instant_markdown_autostart = 0
+"let g:instant_markdown_autostart = 0
 
 " => Airline
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='zenburn'
+let g:airline_theme='base16'
 let g:airline_powerline_fonts = 1
 
 " => vim-anyfold
@@ -85,14 +83,16 @@ let g:anyfold_fold_comments = 1
 set foldlevel=99
 
 """"""""""""""""""""""""
-"	Mappings
+"		Mappings
 """"""""""""""""""""""""
 
 " navigation
-noremap k gk
-noremap j gj
+noremap k g<Up>
+noremap j g<Down>
 noremap 0 g0
 noremap $ g$
+imap <C-k> <Esc>ka
+imap <C-j> <Esc>ja
 
 " start/end of line
 noremap <C-e> $
@@ -115,12 +115,10 @@ nnoremap <Space> za
 "	Color Schemes
 """"""""""""""""""""""""
 
-set termguicolors
-
 " dark theme 233 (darkest) ~ 239 (lightest)
 "colo seoul256
 "let g:seoul256_background = 237
 
 " light theme 252 (darkest) ~ 256 (lightest)
-colo seoul256-light
-let g:seoul256_background = 253
+"colo seoul256-light
+"let g:seoul256_background = 253
