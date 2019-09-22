@@ -1,0 +1,17 @@
+call plug#begin('~/.vim/plugged')
+
+Plug 'chriskempson/base16-vim'
+
+call plug#end()
+
+"colorscheme base16-ocean
+
+" show existing tab with 4 spaces width
+set tabstop=4
+" when indenting with '>', use 4 spaces width
+set shiftwidth=4
+" On pressing tab, insert 4 spaces
+set expandtab
+" save on Enter
+map <silent> <CR> :update<CR>
+set number
