@@ -68,7 +68,7 @@ let g:instant_markdown_autostart = 0
 
 " => Airline
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='zenburn'
+"let g:airline_theme='zenburn'
 let g:airline_powerline_fonts = 1
 
 " => vim-anyfold

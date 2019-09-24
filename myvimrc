@@ -1,17 +1,70 @@
-call plug#begin('~/.vim/plugged')
-
-Plug 'chriskempson/base16-vim'
-
-call plug#end()
-
-"colorscheme base16-ocean
-
 " show existing tab with 4 spaces width
 set tabstop=4
 " when indenting with '>', use 4 spaces width
 set shiftwidth=4
-" On pressing tab, insert 4 spaces
+" on pressing tab, insert 4 spaces
 set expandtab
 " save on Enter
 map <silent> <CR> :update<CR>
+
 set number
+set backspace=indent,eol,start
+set ignorecase
+
+" word wrap
+set wrap linebreak nolist
+
+""""""""""""""""""""""""
+"	Plugins
+""""""""""""""""""""""""
+
+call plug#begin('~/.vim/plugged')
+
+	Plug 'jiangmiao/auto-pairs'
+	Plug 'pseewald/vim-anyfold'
+
+	" themes
+	Plug 'vim-airline/vim-airline'
+	Plug 'vim-airline/vim-airline-themes'
+
+call plug#end()
+
+" => AutoPair
+au FileType markdown let b:AutoPairs = AutoPairsDefine({'$':'$', '**':'**', '_':'_'})
+let g:AutoPairsMapCh = 0
+
+" => Airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='base16_nord'
+let g:airline_powerline_fonts = 1
+
+" => vim-anyfold
+" prereq
+autocmd Filetype * AnyFoldActivate
+
+" enable comment folding
+let g:anyfold_fold_comments = 1
+
+" files are opened unfolded
+set foldlevel=99
+
+""""""""""""""""""""""""
+"	Key Mappings
+""""""""""""""""""""""""
+
+" navigation
+noremap k gk
+noremap j gj
+noremap 0 g0
+noremap $ g$
+
+" rebind meta key for auto-pair plugin commands
+set <M-e>=e
+
+" buffer navigation
+map <leader>n :bn<cr>
+map <leader>p :bp<cr>
+map <leader>d :bd<cr>
+
+" folding
+nnoremap <Space> za
