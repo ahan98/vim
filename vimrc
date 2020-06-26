@@ -1,65 +1,32 @@
-set tabstop=4
-set shiftwidth=4
-set expandtab
-set number
-set backspace=indent,eol,start
-set ignorecase
-set wrap linebreak nolist
+set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+set number relativenumber
 
-map <silent> <CR> :update<CR>
-let mapleader = ";"
-
-""""""""""""""""""""""""
-"	Plugins
-""""""""""""""""""""""""
+filetype plugin on
 
 call plug#begin('~/.vim/plugged')
 
-    Plug 'pseewald/vim-anyfold'
+Plug 'morhetz/gruvbox'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
-    Plug 'lervag/vimtex'
-        let g:tex_flavor='latex'
-        let g:vimtex_quickfix_mode=0
-
-    Plug 'sirver/ultisnips'
-        let g:UltiSnipsExpandTrigger = '<tab>'
-        let g:UltiSnipsJumpForwardTrigger = '<tab>'
-        let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-
-    Plug 'KeitaNakamura/tex-conceal.vim'
-        set conceallevel=2
-        let g:tex_conceal='abdmg'
-
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
-        let g:airline#extensions#tabline#enabled = 1
-        let g:airline_theme='base16_nord'
-        let g:airline_powerline_fonts = 1
+" plasticboy markdown
+" magit
 
 call plug#end()
 
-autocmd Filetype * AnyFoldActivate
+set termguicolors
+set background=dark
+"let g:gruvbox_material_background = 'soft'
+colo gruvbox
 
-" enable comment folding
-let g:anyfold_fold_comments = 1
+" Airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+"let g:airline_theme='base16'
 
-" files are opened unfolded
-set foldlevel=99
+let mapleader = " "
 
-""""""""""""""""""""""""
-"	Key Mappings
-""""""""""""""""""""""""
-
-" navigation
-noremap <Up> gk
-noremap <Down> gj
-noremap 0 g0
-noremap $ g$
-
-" buffer navigation
-map <leader>n :bn<cr>
-map <leader>p :bp<cr>
-map <leader>d :bd<cr>
-
-" folding
-nnoremap <Space> za
+nnoremap <C-s> :update<cr>
+inoremap <C-s> <Esc>:update<cr>gi
+nmap <leader>m <Plug>MarkdownPreviewToggle
