@@ -7,6 +7,7 @@ set cursorline
 set cc=80
 set formatoptions-=cro
 set conceallevel=2
+set foldenable
 
 """""""""""
 " PLUGINS "
@@ -28,6 +29,8 @@ call plug#end()
 " Instant Markdown
 let g:instant_markdown_mathjax = 1
 let g:instant_markdown_slow = 1
+let g:instant_markdown_autoscroll = 1
+let g:vim_markdown_folding_level = 2
 
 " Plasticboy
 let g:vim_markdown_math = 1
@@ -60,9 +63,21 @@ inoremap <C-s> <Esc>:update<cr>gi
 " delete all whitespace
 noremap <leader><bs> :%s/\s\+$//g<cr><C-o>
 
+"=========
 " folding
+"=========
+
+" toggle current fold
 nnoremap ff za
+
+" fold bottom most unfolded
 nnoremap fk zm
+
+" unfold bottom most folded
 nnoremap fj zr
+
+" fold all
 nnoremap Fk zM
+
+" unfold all
 nnoremap Fj zR
