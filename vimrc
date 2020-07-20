@@ -2,11 +2,23 @@
 " EDITOR SETTINGS "
 """""""""""""""""""
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+set backspace=indent,eol,start " backspace over everything in insert mode
 set number relativenumber
 set cursorline
 set cc=80
+set smartcase
+set ignorecase
+set incsearch
+set hlsearch
+
+" wrapping
+set textwidth=80
+set wrapmargin=0
+set formatoptions+=t
+set linebreak " (optional - breaks by word rather than character)
+
 set formatoptions-=cro
-set conceallevel=2
+set conceallevel=3
 set foldenable
 
 """""""""""
@@ -34,6 +46,7 @@ let g:vim_markdown_folding_level = 2
 
 " Plasticboy
 let g:vim_markdown_math = 1
+let g:vim_markdown_auto_insert_bullets = 1
 
 """"""""""
 " THEMES "
@@ -67,17 +80,15 @@ noremap <leader><bs> :%s/\s\+$//g<cr><C-o>
 " folding
 "=========
 
-" toggle current fold
+" toggle current/all folds
 nnoremap ff za
+nnoremap FF zA
 
-" fold bottom most unfolded
-nnoremap fk zm
-
-" unfold bottom most folded
-nnoremap fj zr
-
-" fold all
-nnoremap Fk zM
-
-" unfold all
-nnoremap Fj zR
+"============
+" arrow keys
+"============
+" move cursor visually rather than by (wrapped) lines
+nnoremap <expr> j v:count ? 'j' : 'gj'
+nnoremap <expr> k v:count ? 'k' : 'gk'
+onoremap <silent> j gj
+onoremap <silent> k gk
